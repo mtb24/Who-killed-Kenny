@@ -1,0 +1,87 @@
+<html>
+
+<head>
+
+	<title>Who Killed Kenny?</title>
+
+	<style>
+
+		body {background-color: #000; color:#fff; font-family:arial; max-width:990px; margin: 50px;}
+		.wrapper {width:100%; margin-left: auto; margin-right: auto;}
+		#suspects {height: 160px; width:90%; margin-left: auto; margin-right: auto;}
+		#selection {width:90%; margin-left: auto; margin-right: auto;}
+		#buttons {position: relative; float: right;}
+		ul {margin:0; padding:0; display: inline; list-style-type: none;}
+		ul li {float:left;}
+		hr {clear:both;}
+
+		/* Suspect images*/
+		div#stan {height:150px; width:100px;background:url('i/stan.png');}
+		div#tweak {height:150px; width:100px;background:url('i/tweak.png');}
+		div#kyle {height:150px; width:100px;background:url('i/kyle.png');}
+		div#cartman {height:150px; width:100px;background:url('i/cartman.png');}
+		div#wendy {height:150px; width:100px;background:url('i/wendy.png');}
+		div#ike {height:150px; width:100px;background:url('i/ike.png');}
+		div#kenny {height:150px; width:100px;background:url('i/kenny.png');}
+
+		ul#suspect-list li div {
+		   opacity: .3;
+		   transition: opacity .25s ease-in-out;
+		   -moz-transition: opacity .25s ease-in-out;
+		   -webkit-transition: opacity .25s ease-in-out;
+		}
+
+		ul#suspect-list li div:hover {
+		    opacity: 1;
+		}
+
+	</style>
+
+
+	<script src="js/jquery-1.9.1.min.js"></script>
+
+</head>
+
+
+<body>
+    <div class="wrapper">
+	    <h1>Who Killed Kenny?</h1>
+	    <p>Here are the suspects. Your job is to sort them from who you think is the most likely to the least likely, by clicking on the suspect</p>
+
+	    <div id="suspects">
+	    	<ul id="suspect-list">
+	    	<li><div id="stan" class="image suspect"></div></li>
+	    	<li><div id="tweak" class="image suspect"></div></li>
+	    	<li><div id="kyle" class="image suspect"></div></li>
+	    	<li><div id="cartman" class="image suspect"></div></li>
+	    	<li><div id="wendy" class="image suspect"></div></li>
+	    	<li><div id="ike" class="image suspect"></div></li>
+	    	<li><div id="kenny" class="image suspect"></div></li>
+	    	</ul>
+	    </div>
+	    <hr />
+	    <div id="selection">
+	    	<ul id="selected-suspects">
+	    	</ul>
+	    </div>
+	    <div id="buttons">
+	        <button id="reset" type="reset">Reset</button>
+	        <button type="submit">Save</button>
+	    </div>
+    </div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+    	$("#suspect-list div").on("click", function(){
+    		var node = $(this)[0].parentElement;
+    		document.getElementById("selected-suspects").appendChild(node);
+    	});
+
+    	$("#reset").on("click", function(){
+    		$("#selected-suspects").children().appendTo("#suspect-list");
+    	});
+    });
+</script>
+</body>
+
+</html>
